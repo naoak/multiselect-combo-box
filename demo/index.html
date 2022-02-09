@@ -18,6 +18,25 @@
       body[unresolved] {
         opacity: 0;
       }
+      #customToggleButton::part(input-field) {
+        padding-right: 0;
+      }
+      #customToggleButton::part(toggle-button) {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 36px;
+        color: #fff;
+        background: #4368cf;
+        border-radius: 0 3px 3px 0;
+      }
+      #customToggleButton::part(toggle-button):active {
+        background: #6c89d9;
+      }
+      #customToggleButton::part(toggle-button)::before {
+        content: '❤︎';
+      }
     </style>
 
     <custom-style>
@@ -562,6 +581,55 @@
                   return item.indexOf(e.detail.value) === 0;
                 });
               });
+            });
+          </script>
+        </template>
+      </demo-snippet>
+    </div>
+
+    <div class="vertical-section-container centered">
+      <h3>Custom toggle button</h3>
+      <demo-snippet>
+        <template>
+          <multiselect-combo-box id="customToggleButton" label="Element" placeholder="Select one or more"></multiselect-combo-box>
+
+          <script>
+            customElements.whenDefined('multiselect-combo-box').then(() => {
+              const comboBox = document.querySelector('#customToggleButton');
+              comboBox.items = [
+                'Hydrogen',
+                'Helium',
+                'Lithium',
+                'Beryllium',
+                'Boron',
+                'Carbon',
+                'Nitrogen',
+                'Oxygen',
+                'Fluorine',
+                'Neon',
+                'Sodium',
+                'Magnesium',
+                'Aluminum',
+                'Silicon',
+                'Phosphorus',
+                'Sulfur',
+                'Chlorine',
+                'Argon',
+                'Potassium',
+                'Calcium',
+                'Scandium',
+                'Titanium',
+                'Vanadium',
+                'Chromium',
+                'Manganese',
+                'Iron',
+                'Cobalt',
+                'Nickel',
+                'Copper',
+                'Zinc'
+              ];
+
+              comboBox.selectedItems = ['Helium', 'Lithium'];
             });
           </script>
         </template>
